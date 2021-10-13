@@ -1,0 +1,16 @@
+{
+  "name": "appoptics-legacy",
+  "version": "0.0.1",
+  "private": true,
+  "description": "AppOptics Legacy Instrumented  \"stack\" of http servers that pass requests between each other based on data from path.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r appoptics-apm index.js",
+    "zipkin": "docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin"
+  },
+  "author": "Ron Ilan",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "appoptics-apm": "^10.1.0"
+  }
+}
