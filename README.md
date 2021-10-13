@@ -2,7 +2,7 @@
 
 The PoC server setup creates a stack of 60 instrumented servers inside a docker container. 
 
-A third of the servers are instrumented with the  "Legacy" AppOptics Node Agent (L), a third of the servers are instrumented with the W3C Trace Context enabled AppOptics Node Agent (A) and a third are instrumented using the Open Telemetry Node Agent (O). The AppOptics agents report to the AppOptics backend while the Opet Telemetry agent reports to a local Zipkin instance. 
+A third of the servers are instrumented with the  "Legacy" AppOptics Node Agent (L), a third of the servers are instrumented with the W3C Trace Context enabled AppOptics Node Agent (A) and a third are instrumented using the Open Telemetry Node Agent (O). The AppOptics agents report to the AppOptics backend while the Open Telemetry agent reports to a local Zipkin instance. 
 
 The setup allows to interactively bounce requests between the servers using the request path to create complex tracing scenarios.
 
