@@ -20,14 +20,10 @@ const setServers = async (id) => {
       if (!chain) {
         res.statusCode = 400
         res.end('No Chain.\n')
-      }
-
-      if (player !== id) {
+      } else if (player !== id) {
         res.statusCode = 400
         res.end(`Chain for port ${port} must start with ${player}.\n`)
-      }
-
-      if (chain && (player === id)) {
+      } else if (chain && (player === id)) {
         const rest = chain.slice(1)
         const next = rest[0]
 
