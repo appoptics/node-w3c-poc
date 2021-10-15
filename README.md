@@ -80,6 +80,6 @@ To run this PoC from inside the dev container follow the steps below. Note that 
 ## Troubleshooting
 
 * When failures happen during the start sequence, containers and ports might be "left hanging". Use `docker kill $(docker ps -a)` to forcefully clean the environment.
-* To restart a stack of servers open a new shell `docker exec -it {container if} bash`. In the server directory `ctrl c` to stop `npm start` to start.
+* To restart a stack of servers (if failed) open a new shell `docker exec -it {container id} bash`. In the server directory `ctrl c` to stop (if needed) `npm start` to start.
 
 ###### Fabriqué au Canada : Made in Canada 🇨🇦
