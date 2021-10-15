@@ -58,6 +58,7 @@ container_id=$(docker run -itd \
     -p 3000:3000 \
     -p 3100:3100 \
     -p 3200:3200 \
+    -e NODE_ENV=production \
     --env-file .env \
     "$os_node" bash)
 
