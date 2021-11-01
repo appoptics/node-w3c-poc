@@ -1,4 +1,4 @@
-# Node W3C Trace Context - PoC Server Setup
+# ![Node](./images/nodejs-logo.png) Node W3C Trace Context - PoC Server Setup
 
 The PoC server setup creates a stack of 60 instrumented servers inside a docker container. 
 
@@ -79,7 +79,8 @@ To run this PoC from inside the dev container follow the steps below. Note that 
 
 ## Troubleshooting
 
-* When failures happen during the start sequence, containers and ports might be "left hanging". Use `docker kill $(docker ps -a)` to forcefully clean the environment.
+* When failures happen during the start sequence, containers and ports might be "left hanging". Use `docker kill $(docker ps -a)` to forcefully clean the environment. 
+* To clear a hanging port use `lsof -t -i tcp:{port} | xargs kill` (e.g. `lsof -t -i tcp:3200 | xargs kill`). Prepare for Docker desktop crashes....
 * To restart a stack of servers (if failed) open a new shell `docker exec -it {container id} bash`. In the server directory `ctrl c` to stop (if needed) `npm start` to start.
 
 ###### Fabriqué au Canada : Made in Canada 🇨🇦

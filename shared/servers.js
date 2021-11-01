@@ -19,10 +19,10 @@ const setServers = async (id) => {
 
       if (!chain) {
         res.statusCode = 400
-        res.end('No Chain.\n')
+        res.end('No Chain.')
       } else if (player !== id) {
         res.statusCode = 400
-        res.end(`Chain for port ${port} must start with ${player}.\n`)
+        res.end(`Chain for port ${port} must start with ${id}.`)
       } else if (chain && (player === id)) {
         const rest = chain.slice(1)
         const next = rest[0]
@@ -33,7 +33,7 @@ const setServers = async (id) => {
 
         // however, for span beauty return request later => on this line after logging.
         res.statusCode = 200
-        res.end(`${chain} Chain.\n`)
+        res.end(`${chain} Chain.`)
 
         if (next) {
           const options = { headers: { from: player } }
