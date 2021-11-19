@@ -11,6 +11,6 @@
   "author": "Ron Ilan",
   "license": "Apache-2.0",
   "dependencies": {
-    "appoptics-apm": "git://github.com/appoptics/appoptics-apm-node.git#W3C-Trace-Context"
+    "appoptics-apm": "git://github.com/appoptics/appoptics-apm-node.git#W3C-Trace-Context-mode-1"
   }
 }
