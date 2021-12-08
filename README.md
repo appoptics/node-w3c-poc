@@ -12,13 +12,15 @@ The setup allows to interactively bounce requests between the servers using the 
 2. Create a `.env` file at the root of the project with the following keys:
 
   * required: `APPOPTICS_SERVICE_KEY={api-key}:{service-name}`
-  * optional: `APPOPTICS_COLLECTOR=collector-stg.appoptics.com`
+  * optional: `APPOPTICS_COLLECTOR=collector-stg.appoptics.com` or any other collector.
+  * optional (example): `APPOPTICS_TRUSTEDPATH=__cert/star.my.domain.tld.issuer-crt`
 
 3. From the root of the project ` ./start.sh` - this will start the servers and open a shell prompt to the container.
 
+
 ## Use
 
-Chains of requests are defined using the path and the three Letters `A`, `O`, `L`.
+Chains of requests are defined using the path and the three Letters `A`, `O`, `L`, `S`.
 
 Chains originating at port 3000 must start with 'A'.
 
@@ -26,6 +28,7 @@ Chains originating at port 3100 must start with 'O'.
 
 Chains originating at port 3200 must start with 'L'.
 
+Chains originating at port 3300 must start with 'S'.
 
 ### From Command Line
 
@@ -41,6 +44,7 @@ curl -i -X GET http://localhost:3200/LAOAL
 http://localhost:3000/AAA
 http://localhost:3100/OAO
 http://localhost:3200/LAOAL
+http://localhost:3300/SOS
 ```
 
 ## Traces
@@ -58,6 +62,7 @@ Request log for each server stack of instrumented servers is at the root of the 
 tail -F appoptics-w3c/req.log
 tail -F otel/req.log
 tail -F appoptics-legacy/req.log
+tail -F solarwinds/req.log
 ```
 Logs are deleted each time the servers start.
 
@@ -74,6 +79,7 @@ To run this PoC from inside the dev container follow the steps below. Note that 
   - `cd w3c-poc/appoptics-w3c`, `npm install` and `npm start` 
   - `cd w3c-poc/appoptics-legacy`, `npm install` and `npm start` 
   - `cd w3c-poc/otel`, `npm install` and `npm start` 
+  - `cd w3c-poc/solarwinds`, `npm install` and `npm start`
 5. If zipkin is not running - start it from **outside the dev container** - `docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin`
 6. Traces will be available for viewing with service name `ao-node-test`
 

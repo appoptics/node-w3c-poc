@@ -3,7 +3,8 @@
 const ports = {
   A: 3000,
   O: 3100,
-  L: 3200
+  L: 3200,
+  S: 3300
 }
 
 // how many servers we need

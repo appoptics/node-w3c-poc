@@ -14,7 +14,7 @@ const setServers = async (id) => {
     http.createServer(function (req, res) {
       res.setHeader('Content-Type', 'text/plain')
 
-      const chain = new url.URL(req.url, base).pathname.slice(1).replace(/[^AOL]/g, '')
+      const chain = new url.URL(req.url, base).pathname.slice(1).replace(/[^AOLS]/g, '')
       const player = chain[0] || ''
 
       if (!chain) {

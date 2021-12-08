@@ -22,14 +22,17 @@ echo_section() {
 
 cleanup() {
     # remove artifacts left locally by previous npm install
-    rm -rf appoptics-legacy/node_modules 
-    rm -rf appoptics-w3c/node_modules 
+    rm -rf appoptics-w3c/node_modules
     rm -rf otel/node_modules
+    rm -rf appoptics-legacy/node_modules 
+    rm -rf solarwinds/node_modules
 
-    rm -rf appoptics-legacy/package-lock.json
     rm -rf appoptics-w3c/package-lock.json
+    rm -rf appoptics-legacy/package-lock.json
     rm -rf otel/package-lock.json
+    rm -rf solarwinds/package-lock.json
 
+    docker stop "$container_id"
     docker rm "$container_id"
 }
 
@@ -58,6 +61,7 @@ container_id=$(docker run -itd \
     -p 3000:3000 \
     -p 3100:3100 \
     -p 3200:3200 \
+    -p 3300:3300 \
     -e NODE_ENV=production \
     --env-file .env \
     "$os_node" bash)
@@ -66,14 +70,16 @@ container_id=$(docker run -itd \
 echo_section "NPM install"
 
 docker exec "$container_id" bash -c "cd appoptics-legacy && npm install"
-docker exec "$container_id" bash -c "cd appoptics-w3c && npm install"
 docker exec "$container_id" bash -c "cd otel && npm install"
+docker exec "$container_id" bash -c "cd appoptics-w3c && npm install"
+docker exec "$container_id" bash -c "cd solarwinds && npm install"
 
 echo_section "Start Servers"
 
-docker exec "$container_id" bash -c "npm run --prefix appoptics-w3c start &"
 docker exec "$container_id" bash -c "npm run --prefix appoptics-legacy start &"
 docker exec "$container_id" bash -c "npm run --prefix otel start &"
+docker exec "$container_id" bash -c "npm run --prefix appoptics-w3c start &"
+docker exec "$container_id" bash -c "npm run --prefix solarwinds start &"
 
 echo_section "System info"
 
