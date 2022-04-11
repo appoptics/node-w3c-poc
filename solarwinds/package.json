@@ -11,6 +11,6 @@
   "author": "Ron Ilan",
   "license": "Apache-2.0",
   "dependencies": {
-    "solarwinds-apm": "git://github.com/solarwindscloud/solarwinds-apm-node"
+    "solarwinds-apm": "https://github.com/solarwindscloud/solarwinds-apm-node"
   }
 }
